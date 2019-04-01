@@ -1,3 +1,7 @@
+
+// Set a countdown timer
+// Get rid of alerts and assign html divs instead
+
 var question1 = {
     question: "Who lived at 221B, Baker Street, London?",
     options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
@@ -20,45 +24,54 @@ var questionsArray = [question1, question2, question3];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var time = 0;
-var displayedQuestions = 0;
+var j = 0; // Variable used to loop through questionsArray
 
+// Creating a function to display remaining time.
 function timeUpdate () {
     time++;
     $("#time").html(`Time Remaining: ${time}`);
 }
 
 function displayNewQuestion () {
-    randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
-    console.log(`Correct answer: ${randomQuestion.correctAnswer}`);
-    $("#question").html(randomQuestion.question);
+    time = 0;
+    currentQuestion = questionsArray[j];
+    $("#question").html(currentQuestion.question);
+    j++;
     $("#buttons").empty();
-    for (var i = 0; i < randomQuestion.options.length; i++) {
-        $("#buttons").append(`<button>${randomQuestion.options[i]}</button>`);
+    for (var i = 0; i < currentQuestion.options.length; i++) {
+        $("#buttons").append(`<button>${currentQuestion.options[i]}</button>`);
     }
-    displayedQuestions++;
+    j++;
     setInterval(timeUpdate, 1 * 1000);
-    
+    setTimeout (() => {
+        console.log("Time is up!");
+        console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
+        incorrectAnswers++;
+        setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
+    }, 15 * 1000)
 }
 
 displayNewQuestion ();
 
-setTimeout (() => {
-    alert ("Time is up!");
-    alert(`The correct answer is ${randomQuestion.correctAnswer}`);
-    incorrectAnswers++;
-    setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-}, 15 * 1000)
+//while (j < questionsArray.length) {
+    // setTimeout (() => {
+    //     console.log("Time is up!");
+    //     console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
+    //     incorrectAnswers++;
+    //     setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
+    // }, 15 * 1000)
+//}
 
 $(document).on("click", "button", function () {
-    if ($(this).text() == randomQuestion.correctAnswer) {
-        alert("That is correct! Congrats!");
+    if ($(this).text() == currentQuestion.correctAnswer) {
+        console.log("That is correct! Congrats!");
         correctAnswers++;
         clearTimeout();
         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     } 
     else {
-        alert("Incorrect");
-        alert(`The correct answer is ${randomQuestion.correctAnswer}`);
+        console.log("Incorrect");
+        console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
         incorrectAnswers++;
         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     }
