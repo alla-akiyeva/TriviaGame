@@ -17,6 +17,9 @@ var question3 = {
 }
 
 var questionsArray = [question1, question2, question3];
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+var time = 0;
 
 function displayNewQuestion () {
     randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
@@ -30,26 +33,37 @@ function displayNewQuestion () {
 
 displayNewQuestion ();
 
-$("button").on("click", function () {
+$(document).on("click", "button", function () {
     if ($(this).text() == randomQuestion.correctAnswer) {
-        alert("Congrats!");
-    //  wait a few seconds;
-        displayNewQuestion ();
+        alert("That is correct! Congrats!");
+        correctAnswers++;
+        setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     } 
     else {
         alert("Incorrect");
-    //  display correct answer;
-    //  wait a few seconds;
-        displayNewQuestion ();
+        alert(`The correct answer is ${randomQuestion.correctAnswer}`);
+        incorrectAnswers++;
+        setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     }
 });
 
-//timeout function { --> after 20 seconds
-//  alert (time is up!);
-//  display correct answer
-//  wait a few seconds
-//  displayNewQuestion ();
-//}
+setTimeout (() => {
+    alert ("Time is up!");
+    alert(`The correct answer is ${randomQuestion.correctAnswer}`);
+    incorrectAnswers++;
+    setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
+}, 15 * 1000)
 
 //  endGame function
-// Final screen: show number of correct answers, incorrect answers, option to restart the game (do not reload the page).
+// Condition here: after a certain number of questions have been displayed:
+if (confirm(
+    `
+        Total correct answers: ${correctAnswers}
+        Total incorrect answers: ${incorrectAnswers}
+        Would you like to restart the game?
+    `
+)) {
+    displayNewQuestion ();
+    correctAnswers = 0;
+    incorrectAnswers = 0;
+}
