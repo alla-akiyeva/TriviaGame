@@ -1,12 +1,12 @@
 var question1 = {
     question: "Who lived at 221B, Baker Street, London?",
-    options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Susan Boyle"],
+    options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
     correctAnswer: "Sherlock Holmes"
 };
 
 var question2 = {
     question: "Who painted The Birth of Venus?",
-    options: ["Sandro Botticelli, Michelangelo Buonarroti, Leonardo da Vinci, Salvador Dali"],
+    options: ["Sandro Botticelli", "Michelangelo Buonarroti", "Leonardo da Vinci", "Salvador Dali"],
     correctAnswer: "Sandro Botticelli"
 }
 
@@ -17,32 +17,38 @@ var question3 = {
 }
 
 var questionsArray = [question1, question2, question3];
-var randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
 
-$("#question").html(randomQuestion.question);
-$("button").html(randomQuestion.options); //loop through options //add string manipulation
-for (var i = 0; i < randomQuestion.options.length; i++) {
-    $("#buttons").append(`<button>${randomQuestion.options[i]}</button>`);
+function displayNewQuestion () {
+    randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
+    console.log(`Correct answer: ${randomQuestion.correctAnswer}`);
+    $("#question").html(randomQuestion.question);
+    $("#buttons").empty();
+    for (var i = 0; i < randomQuestion.options.length; i++) {
+        $("#buttons").append(`<button>${randomQuestion.options[i]}</button>`);
+    }
 }
 
-// on click event listener function {
-//   if button with the attribute correctAnswer is pressed {
-//      alert (congrats!)
-//      wait a few seconds
-//      display next question
-// } else {
-//     alert (time is up!);
-//     display correct answer
-//     wait a few seconds
-//     display next question
-//   }
-//}
+displayNewQuestion ();
+
+$("button").on("click", function () {
+    if ($(this).text() == randomQuestion.correctAnswer) {
+        alert("Congrats!");
+    //  wait a few seconds;
+        displayNewQuestion ();
+    } 
+    else {
+        alert("Incorrect");
+    //  display correct answer;
+    //  wait a few seconds;
+        displayNewQuestion ();
+    }
+});
 
 //timeout function { --> after 20 seconds
 //  alert (time is up!);
 //  display correct answer
 //  wait a few seconds
-//  display next question
+//  displayNewQuestion ();
 //}
 
 //  endGame function
