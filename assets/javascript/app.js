@@ -20,6 +20,7 @@ var questionsArray = [question1, question2, question3];
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var time = 0;
+var displayedQuestions = 0;
 
 function displayNewQuestion () {
     randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
@@ -29,14 +30,23 @@ function displayNewQuestion () {
     for (var i = 0; i < randomQuestion.options.length; i++) {
         $("#buttons").append(`<button>${randomQuestion.options[i]}</button>`);
     }
+    displayedQuestions++;
 }
 
 displayNewQuestion ();
+
+setTimeout (() => {
+    alert ("Time is up!");
+    alert(`The correct answer is ${randomQuestion.correctAnswer}`);
+    incorrectAnswers++;
+    setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
+}, 15 * 1000)
 
 $(document).on("click", "button", function () {
     if ($(this).text() == randomQuestion.correctAnswer) {
         alert("That is correct! Congrats!");
         correctAnswers++;
+        clearTimeout();
         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     } 
     else {
@@ -47,14 +57,9 @@ $(document).on("click", "button", function () {
     }
 });
 
-setTimeout (() => {
-    alert ("Time is up!");
-    alert(`The correct answer is ${randomQuestion.correctAnswer}`);
-    incorrectAnswers++;
-    setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-}, 15 * 1000)
-
 //  endGame function
+// while displayedQuestions < 10, run game function
+// if (displayedQuestions ===10), show alert {}
 // Condition here: after a certain number of questions have been displayed:
 if (confirm(
     `
