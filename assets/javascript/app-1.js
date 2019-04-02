@@ -41,26 +41,43 @@ function displayNewQuestion () {
     for (var i = 0; i < currentQuestion.options.length; i++) {
         $("#buttons").append(`<button>${currentQuestion.options[i]}</button>`);
     }
-    j++;
-    setInterval(timeUpdate, 1 * 1000);
-    setTimeout (() => {
-        console.log("Time is up!");
-        console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
-        incorrectAnswers++;
-        setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-    }, 15 * 1000)
+    setInterval(timeUpdate, 1000);
 }
 
-displayNewQuestion ();
+setTimeout (() => {
+    alert ("Time is up!");
+    alert(`The correct answer is ${randomQuestion.correctAnswer}`);
+    incorrectAnswers++;
+    setTimeout (displayNewQuestion, 3000)
+}, 15 * 1000)
 
-//while (j < questionsArray.length) {
-    // setTimeout (() => {
-    //     console.log("Time is up!");
-    //     console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
-    //     incorrectAnswers++;
-    //     setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-    // }, 15 * 1000)
-//}
+// setTimeout (() => {
+//     console.log("Time is up!");
+//     console.log(`The correct answer is ${currentQuestion.correctAnswer}`);
+//     incorrectAnswers++;
+//     setTimeout (() => {
+//         displayNewQuestion ();
+//     }, 3 * 1000)
+// }, 15 * 1000)
+
+while (j < questionsArray.length) {
+    displayNewQuestion ();
+    setTimeout ();
+}
+
+function endGame () {
+    if (confirm(
+        `
+            Total correct answers: ${correctAnswers}
+            Total incorrect answers: ${incorrectAnswers}
+            Would you like to restart the game?
+        `
+    )) {
+        displayNewQuestion ();
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+    }
+}
 
 $(document).on("click", "button", function () {
     if ($(this).text() == currentQuestion.correctAnswer) {
@@ -75,19 +92,4 @@ $(document).on("click", "button", function () {
         incorrectAnswers++;
         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
     }
-});
-
-//  endGame function
-// while displayedQuestions < 10, run game function
-// if (displayedQuestions ===10), show message box confirm {}
-// if (confirm(
-//     `
-//         Total correct answers: ${correctAnswers}
-//         Total incorrect answers: ${incorrectAnswers}
-//         Would you like to restart the game?
-//     `
-// )) {
-//     displayNewQuestion ();
-//     correctAnswers = 0;
-//     incorrectAnswers = 0;
-// }
+}); 
