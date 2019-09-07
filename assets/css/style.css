@@ -3,10 +3,14 @@ body {
     color: white;
 }
 
-img {
-    width: 500px;
-}
-
 p {
     color: white;
+}
+
+.container {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+
 }
