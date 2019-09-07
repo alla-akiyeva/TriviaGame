@@ -51,12 +51,19 @@ function displayQtn () {
         $("#question").html(qtnsArr[index].question);
         $("#buttons").empty();
         for (var i = 0; i < qtnsArr[index].options.length; i++) {
-            $("#buttons").append(`<button>${qtnsArr[index].options[i]}</button>`);
+            let button = qtnsArr[index].options[i];
+            $("#buttons").append(`<button class="answers">${button}</button>`);
         };
+        console.log("displayQtn", qtnsArr[index].question);
+        console.log("displayQtn", qtnsArr[index].correctAnswer);
         setTimeout(timeOut, 5 * 1000);
     } else {
         gameOver();
     }
+    $("#buttons").off().on("click", ".answers", function () {
+        clearTimeout();
+        onClick($(this).text());
+    });
 }
 
 function timeOut () {
@@ -66,27 +73,34 @@ function timeOut () {
     setTimeout(displayQtn, 3 * 1000);
 }
 
-function gameOver () {
-    $("#question").html("Game Over");
-    $("#buttons").empty();
-};
-
-function gameRestart () {
-
-};
-
-$(document).on("click", "button", function () {
-    clearTimeout();
-    if ($(this).text === qtnsArr[index].correctAnswer) {
-        $("#questions").html(`That is correct! The right answer is ${qtnsArr[index].correctAnswer}`);
+function onClick (text) {
+    let answer = qtnsArr[index].correctAnswer;
+    if (text === answer) {
+        $("#questions").html(`That is correct! The right answer is ${answer}`);
         $("#buttons").empty();
         wins++;
     } else {
-        $("#questions").html(`That is correct! The right answer is ${qtnsArr[index].correctAnswer}`);
+        $("#question").html(`Wrong! The answer is ${answer}`);
         $("#buttons").empty();
-        wins++;
+        losses++;
     }
-})
+}
+
+function gameOver () {
+    $("#question").html("Game Over");
+    $("#buttons").empty();
+    $("#buttons").append(`<button class="myClass">Restart the game</button>`);
+    $("#question-div").on("click", ".myClass", function () {
+        gameRestart();
+    });
+};
+
+function gameRestart () {
+    wins = 0;
+    losses = 0;
+    index = 0;
+    displayQtn ();
+};
 
 $(document).ready(displayQtn);
 
