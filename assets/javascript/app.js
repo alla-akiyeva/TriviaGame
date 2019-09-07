@@ -35,48 +35,59 @@ const qtnsArr = [
 
 let wins = 0;
 let losses = 0;
-const time = 0;
+let noanswer = 0;
+let time = 15;
 let index = 0;
 
-// function condition () {
-//     if (index < qtnsArr.length) {
-//         displayQtn();
-//     } else {
-//         gameOver();
-//     }
-// }
+function timeUpdate () {
+    if (time > 0) {
+        time--;
+    }
+    $("#time").html(`Time Remaining: ${time}`);
+}
 
 function displayQtn () {
+    time = 15;
+    var timeout;
+    var interval = setInterval(timeUpdate, 1 * 1000);
     if (index < qtnsArr.length) {
         $("#question").html(qtnsArr[index].question);
         $("#buttons").empty();
+
         for (var i = 0; i < qtnsArr[index].options.length; i++) {
             let button = qtnsArr[index].options[i];
             $("#buttons").append(`<button class="answers">${button}</button>`);
         };
         console.log("displayQtn", qtnsArr[index].question);
         console.log("displayQtn", qtnsArr[index].correctAnswer);
-        setTimeout(timeOut, 5 * 1000);
+
+        timeout = setTimeout(function () {
+            clearInterval(interval);
+            timeOut();
+        }, 15 * 1000);
     } else {
+        clearInterval(interval);
         gameOver();
     }
     $("#buttons").off().on("click", ".answers", function () {
-        clearTimeout();
+        clearTimeout(timeout);
+        clearInterval(interval);
         onClick($(this).text());
     });
 }
 
 function timeOut () {
     $("#question").html("Time is up!");
-    $("#buttons").html(`The correct answer is ${qtnsArr[index].correctAnswer}`);
+    $("#buttons").html(`The answer is ${qtnsArr[index].correctAnswer}`);
     index++;
-    setTimeout(displayQtn, 3 * 1000);
+    noanswer++;
+    setTimeout(displayQtn, 4 * 1000);
 }
 
 function onClick (text) {
     let answer = qtnsArr[index].correctAnswer;
     if (text === answer) {
-        $("#questions").html(`That is correct! The right answer is ${answer}`);
+        $("#question").html(`Correct! The answer is ${answer}`);
         $("#buttons").empty();
         wins++;
     } else {
@@ -84,10 +95,12 @@ function onClick (text) {
         $("#buttons").empty();
         losses++;
     }
+    index++;
+    setTimeout(displayQtn, 4 * 1000);
 }
 
 function gameOver () {
-    $("#question").html("Game Over");
+    $("#question").html(`Game Over <br> Correct answers: ${wins} <br> Wrong answers: ${losses} <br> Unanswered questions: ${noanswer}`);
     $("#buttons").empty();
     $("#buttons").append(`<button class="myClass">Restart the game</button>`);
     $("#question-div").on("click", ".myClass", function () {
@@ -161,18 +174,3 @@ $(document).ready(displayQtn);
 //     correctAnswers = 0;
 //     incorrectAnswers = 0;
 // }
-
-
-
-
-// If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, display the next question -- do this without user input.
-
-
-// The scenario is similar for wrong answers and time-outs.
-
-// If the player runs out of time, tell the player that time's up and display the correct answer. Wait a few seconds, then show the next question.
-// If the player chooses the wrong answer, tell the player they selected the wrong option and then display the correct answer. Wait a few seconds, then show the next question.
-
-
-
-// On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
