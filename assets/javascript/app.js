@@ -11,7 +11,7 @@ const qtnsArr = [
         options: ["Sandro Botticelli", "Michelangelo Buonarroti", "Leonardo da Vinci", "Salvador Dali"],
         correctAnswer: "Sandro Botticelli",
         image: "Birth of Venus",
-        note: "The Birth of Venus is one of the most recognized Renaissance paintings. Along with Botticelli's other famous work, Primavera, The Birth of Venus is displayed in the Uffizi gallery in Florence, Italy"
+        note: "\"The Birth of Venus\" is one of the most recognized Renaissance paintings. Along with Botticelli's other famous work, \"Primavera\", The Birth of Venus is displayed in the Uffizi gallery in Florence, Italy."
     },
     {
         question: "Which German city is famous for the perfume it produces?",
@@ -20,11 +20,6 @@ const qtnsArr = [
         image: "Cologne",
         note: "Cologne is an ancient city established by the Romans in the 1st century AD. \"Eau de Cologne\" means \"water from Cologne\" in French. "
     }, 
-    // {
-    //     question: "Which famous novel is based in Atlanta, GA?",
-    //     options: ["The Fault in Our Stars by John Green", "Resurrection by Leo Tolstoy", "Animal Farm by George Orwell", "Gone With The Wind by Margaret Mitchell"],
-    //     correctAnswer: "Gone With The Wind by Margaret Mitchell"
-    // },
     {
         question: "Which architectural masterpiece has the largest brick dome ever built?",
         options: ["Florence Cathedral", "Hagia Sophia", "Pantheon", "Trump Tower"],
@@ -40,9 +35,10 @@ const qtnsArr = [
         note: "St Peter's Basilica is located in the Vatican City west of the River Tiber in Rome. The church is so large, the Statue of Liberty could fit inside it."
     },
     {
-        question: the creation of adam
-        options:
-        correctAnswer:
+        question: "Which Michelangelo's painting is part of the Sistine Chapel's celing?",
+        options: ["The Creation of Adam", "Mona Lisa", "The Kiss", "Liberty Leading the People"],
+        correctAnswer: "The Creation of Adam",
+        note: "\"The Creation of Adam\" is one of the most famous and replicated religious paintings of all time. An avid student of anatomy, Michelangelo may or may not have intended the outline of God's shroud to resemble the shape of a brain."
     },
     {
         question: hamlet
@@ -55,14 +51,16 @@ const qtnsArr = [
         correctAnswer:
     },
     {
-        question: primavera
-        options:
-        correctAnswer:
+        question: "Which painting, according to critics, symbolizes the fertility and fruitfulness of the world?"
+        options: ["Girl with a Pearl Earing", "The Last Supper", "Primavera (Spring)", "Vitruvian Man"],
+        correctAnswer: "Primavera (Spring)",
+        note: "It has been proposed that the model for both \"The Birth of Venus\" and \"Primavera\" was Florentine beauty Simonetta Vespucci, who happened to be Amerigo Vespucci's cousin-in-law."
     },
     {
-        question: queen elizabeth i
-        options:
-        correctAnswer:
+        question: "Known as the Virgin Queen, which British Monarch defeated the Spanish Armada"?,
+        options: ["Mary, Queen of Scots", "Queen Elizabeth I", "Queen Elizabeth II", "Queen Victoria"],
+        correctAnswer: "Queen Elizabeth I",
+        note: "Elizabeth also established Protestantism in English, was the last of the House of Tudor monarchs and a deadly rival of Mary, Queen of Scots."
     }
     ]
 
