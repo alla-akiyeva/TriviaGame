@@ -3,66 +3,71 @@ const qtnsArr = [
         question: "Who lived at 221B, Baker Street, London?",
         options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
         correctAnswer: "Sherlock Holmes",
-        image: "Baker Street", 
+        image: "assets/images/sherlock-2640292_1280.jpg",
         note: "221B Baker Street is the London address of the fictional detective Sherlock Holmes in Sir Arthur Conan Doyle's novels"
     },
     {
         question: "Who painted The Birth of Venus?",
         options: ["Sandro Botticelli", "Michelangelo Buonarroti", "Leonardo da Vinci", "Salvador Dali"],
         correctAnswer: "Sandro Botticelli",
-        image: "Birth of Venus",
-        note: "\"The Birth of Venus\" is one of the most recognized Renaissance paintings. Along with Botticelli's other famous work, \"Primavera\", The Birth of Venus is displayed in the Uffizi gallery in Florence, Italy."
+        image: "assets/images/painting-63186_1280.jpg",
+        note: "\"The Birth of Venus\" is one of the most recognized Renaissance paintings. Along with Botticelli's other famous work, \"Primavera\", \"The Birth of Venus\" is displayed in the Uffizi gallery in Florence, Italy."
     },
     {
         question: "Which German city is famous for the perfume it produces?",
         options: ["Munich", "Berlin", "Rudersberg", "Cologne"],
         correctAnswer: "Cologne",
-        image: "Cologne",
+        image: "assets/images/dom-1726457_1920.jpg",
         note: "Cologne is an ancient city established by the Romans in the 1st century AD. \"Eau de Cologne\" means \"water from Cologne\" in French. "
     }, 
     {
         question: "Which architectural masterpiece has the largest brick dome ever built?",
         options: ["Florence Cathedral", "Hagia Sophia", "Pantheon", "Trump Tower"],
         correctAnswer: "Florence Cathedral",
-        image: "Duomo di Firenze",
+        image: "assets/images/ancient-architecture-building-290885.jpg",
         note: "Florence Cathedral is also known as Duomo di Firenze or Cattedrale di Santa Maria del Fiore. An example of architectural brilliance, it took over a hundred years to build. A special herringbone brick laying technique was used to support the massive weight of its brick dome, design by Filippo Brunelleschi."
     },
     {
         question: "Which church is located in the Vatican?",
         options: ["St Basil's Cathedral", "Westminster Abbey", "St Peter's Basilica", "La Sagrada Familia"],
         correctAnswer: "St Peter's Basilica",
-        image: "St Peter's Basilica",
+        image: "assets/images/altar-arches-architecture-933846.jpg",
         note: "St Peter's Basilica is located in the Vatican City west of the River Tiber in Rome. The church is so large, the Statue of Liberty could fit inside it."
     },
     {
         question: "Which Michelangelo's painting is part of the Sistine Chapel's celing?",
         options: ["The Creation of Adam", "Mona Lisa", "The Kiss", "Liberty Leading the People"],
         correctAnswer: "The Creation of Adam",
+        image: "assets/images/creation-of-man-1159966_1920.jpg",
         note: "\"The Creation of Adam\" is one of the most famous and replicated religious paintings of all time. An avid student of anatomy, Michelangelo may or may not have intended the outline of God's shroud to resemble the shape of a brain."
     },
     {
         question: "\"Cowards die many times before their deaths; the valiant never taste of death but once.\", \"All the world ‘s a stage, and all the men and women merely players.\" - these are quotes by which great writer?",
         options: ["Fyodor Dostoevsky", "William Shakespeare", "Charles Dickens", "Oscar Wilde"],
         correctAnswer: "William Shakespeare",
+        image: "assets/images/william-shakespeare-62936_1280.jpg",
         note: "Widely known as a prolific poet, writer, playwright, Shakespeare was also an actor who performed in many of his own plays."
     },
     {
         question: "Who was the longest-reigning British monarch, second after Elizabeth II?",
         options: ["George V", "Edward VIII", "George VI", "Queen Victoria"],
         correctAnswer: "Queen Victoria",
+        image: "assets/images/franz-winterhalter-92248_1920.jpg",
         note: "Victoria became a queen at age 18 and, until recently, was the longest-reigning British monarch. The Victorian era is known by the Industrial Revolution and a great expansion and power of the British Empire."
     },
     {
         question: "Which painting, according to critics, symbolizes the fertility and fruitfulness of the world?",
         options: ["Girl with a Pearl Earing", "The Last Supper", "Primavera (Spring)", "Vitruvian Man"],
         correctAnswer: "Primavera (Spring)",
+        image: "assets/images/dim-7-C3BdCCGlbMU-unsplash.jpg",
         note: "It has been proposed that the model for both \"The Birth of Venus\" and \"Primavera\" was Florentine beauty Simonetta Vespucci, who happened to be Amerigo Vespucci's cousin-in-law."
     },
     {
-        question: "Known as the Virgin Queen, which British Monarch defeated the Spanish Armada"?,
+        question: "Known as the Virgin Queen, which British Monarch defeated the Spanish Armada?",
         options: ["Mary, Queen of Scots", "Queen Elizabeth I", "Queen Elizabeth II", "Queen Victoria"],
         correctAnswer: "Queen Elizabeth I",
-        note: "Elizabeth also established Protestantism in English, was the last of the House of Tudor monarchs and a deadly rival of Mary, Queen of Scots."
+        image: "TriviaGame/assets/images/queen-62969_1280.jpg",
+        note: "Elizabeth also established Protestantism in England, was a deadly rival of Mary Queen of Scots and the last of the monarchs of House of Tudor."
     }
     ]
 
@@ -132,6 +137,8 @@ function onClick (text) {
     if (text === answer) {
         $("#question").html(`Correct! The answer is ${answer}`);
         $("#buttons").empty();
+        $("#question").append(`<p>${qtnsArr[index].note}</p>`);
+        $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
         wins++;
     } else {
         $("#question").html(`Wrong! The answer is ${answer}`);
@@ -139,7 +146,7 @@ function onClick (text) {
         losses++;
     }
     index++;
-    setTimeout(displayQtn, 4 * 1000);
+    setTimeout(displayQtn, 8 * 1000);
 }
 
 function gameOver () {
