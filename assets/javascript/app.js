@@ -41,17 +41,19 @@ const qtnsArr = [
         note: "\"The Creation of Adam\" is one of the most famous and replicated religious paintings of all time. An avid student of anatomy, Michelangelo may or may not have intended the outline of God's shroud to resemble the shape of a brain."
     },
     {
-        question: hamlet
-        options:
-        correctAnswer:
+        question: "\"Cowards die many times before their deaths; the valiant never taste of death but once.\", \"All the world ‘s a stage, and all the men and women merely players.\" - these are quotes by which great writer?",
+        options: ["Fyodor Dostoevsky", "William Shakespeare", "Charles Dickens", "Oscar Wilde"],
+        correctAnswer: "William Shakespeare",
+        note: "Widely known as a prolific poet, writer, playwright, Shakespeare was also an actor who performed in many of his own plays."
     },
     {
-        question: queen Victoria
-        options:
-        correctAnswer:
+        question: "Who was the longest-reigning British monarch, second after Elizabeth II?",
+        options: ["George V", "Edward VIII", "George VI", "Queen Victoria"],
+        correctAnswer: "Queen Victoria",
+        note: "Victoria became a queen at age 18 and, until recently, was the longest-reigning British monarch. The Victorian era is known by the Industrial Revolution and a great expansion and power of the British Empire."
     },
     {
-        question: "Which painting, according to critics, symbolizes the fertility and fruitfulness of the world?"
+        question: "Which painting, according to critics, symbolizes the fertility and fruitfulness of the world?",
         options: ["Girl with a Pearl Earing", "The Last Supper", "Primavera (Spring)", "Vitruvian Man"],
         correctAnswer: "Primavera (Spring)",
         note: "It has been proposed that the model for both \"The Birth of Venus\" and \"Primavera\" was Florentine beauty Simonetta Vespucci, who happened to be Amerigo Vespucci's cousin-in-law."
