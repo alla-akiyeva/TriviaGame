@@ -3,7 +3,7 @@ const qtnsArr = [
         question: "Who lived at 221B, Baker Street, London?",
         options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
         correctAnswer: "Sherlock Holmes",
-        image: "assets/images/sherlock-2640292_1280.jpg",
+        image: "assets/images/sherlock-2640292_1280.jpg", // Most, if not all, images are downloaded from pixabay.com 
         note: "221B Baker Street is the London address of the fictional detective Sherlock Holmes in Sir Arthur Conan Doyle's novels"
     },
     {
@@ -24,14 +24,14 @@ const qtnsArr = [
         question: "Which architectural masterpiece has the largest brick dome ever built?",
         options: ["Florence Cathedral", "Hagia Sophia", "Pantheon", "Trump Tower"],
         correctAnswer: "Florence Cathedral",
-        image: "assets/images/ancient-architecture-building-290885.jpg",
+        image: "assets/images/italy-4256016_1280.jpg",
         note: "Florence Cathedral is also known as Duomo di Firenze or Cattedrale di Santa Maria del Fiore. An example of architectural brilliance, it took over a hundred years to build. A special herringbone brick laying technique was used to support the massive weight of its brick dome, design by Filippo Brunelleschi."
     },
     {
         question: "Which church is located in the Vatican?",
         options: ["St Basil's Cathedral", "Westminster Abbey", "St Peter's Basilica", "La Sagrada Familia"],
         correctAnswer: "St Peter's Basilica",
-        image: "assets/images/altar-arches-architecture-933846.jpg",
+        image: "assets/images/god-2058084_1920.jpg",
         note: "St Peter's Basilica is located in the Vatican City west of the River Tiber in Rome. The church is so large, the Statue of Liberty could fit inside it."
     },
     {
@@ -66,7 +66,7 @@ const qtnsArr = [
         question: "Known as the Virgin Queen, which British Monarch defeated the Spanish Armada?",
         options: ["Mary, Queen of Scots", "Queen Elizabeth I", "Queen Elizabeth II", "Queen Victoria"],
         correctAnswer: "Queen Elizabeth I",
-        image: "TriviaGame/assets/images/queen-62969_1280.jpg",
+        image: "assets/images/queen-62969_1280.jpg",
         note: "Elizabeth also established Protestantism in England, was a deadly rival of Mary Queen of Scots and the last of the monarchs of House of Tudor."
     }
     ]
@@ -134,23 +134,36 @@ function timeOut () {
 
 function onClick (text) {
     let answer = qtnsArr[index].correctAnswer;
+    // if (text === answer) {
+    //     $("#question").html(`Correct! The answer is ${answer}`);
+    //     $("#buttons").empty();
+    //     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
+    //     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
+    //     wins++;
+    // } else {
+    //     $("#question").html(`Wrong! The answer is ${answer}`);
+    //     $("#buttons").empty();
+    //     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
+    //     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
+    //     losses++;
+    // }
     if (text === answer) {
         $("#question").html(`Correct! The answer is ${answer}`);
-        $("#buttons").empty();
-        $("#question").append(`<p>${qtnsArr[index].note}</p>`);
-        $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
         wins++;
     } else {
         $("#question").html(`Wrong! The answer is ${answer}`);
-        $("#buttons").empty();
         losses++;
     }
+    $("#buttons").empty();
+    $("#question").append(`<p>${qtnsArr[index].note}</p>`);
+    $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
     index++;
     setTimeout(displayQtn, 8 * 1000);
 }
 
 function gameOver () {
-    $("#question").html(`Game Over <br> Correct answers: ${wins} <br> Wrong answers: ${losses} <br> Unanswered questions: ${noanswer}`);
+    let score = wins / index * 100;
+    $("#question").html(`Your Score <br> <h3>${score}%</h3> Correct answers: ${wins} <br> Wrong answers: ${losses} <br> Unanswered questions: ${noanswer}`);
     $("#buttons").empty();
     $("#buttons").append(`<button class="myClass">Restart the game</button>`);
     $("#question-div").on("click", ".myClass", function () {

@@ -1,21 +1,55 @@
-body {
-    background-color: black;
-    color: white;
+/* body {
+    background-image: url("../images/church-2459894_1920.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: 100%;
+} */
+
+body::after {
+    background: url("../images/church-2459894_1920.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: 100%;
+    content: "";
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
 }
 
-p {
+/* p {
     color: white;
-}
+} */
 
 .container {
     width: 60%;
     text-align: center;
     margin: auto;
-    margin-top: 10%;
+    /* margin-top: 10%; */
+    background-color: white;
+    padding: 20px;
 
 }
 
 img {
     margin: auto;
     height: 400px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 5%;
+}
+
+.myClass {
+    padding: 7px;
+    border-radius: 5%;
+    background-color: #ff9100;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
 }
