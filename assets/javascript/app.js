@@ -3,7 +3,7 @@ const qtnsArr = [
         question: "Who lived at 221B, Baker Street, London?",
         options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
         correctAnswer: "Sherlock Holmes",
-        image: "assets/images/sherlock-2640292_1280.jpg", // Most, if not all, images are downloaded from pixabay.com 
+        image: "assets/images/sherlock-2640292_1280.jpg", // Most, if not all images were downloaded from pixabay.com 
         note: "221B Baker Street is the London address of the fictional detective Sherlock Holmes in Sir Arthur Conan Doyle's novels"
     },
     {
@@ -25,7 +25,7 @@ const qtnsArr = [
         options: ["Florence Cathedral", "Hagia Sophia", "Pantheon", "Trump Tower"],
         correctAnswer: "Florence Cathedral",
         image: "assets/images/italy-4256016_1280.jpg",
-        note: "Florence Cathedral is also known as Duomo di Firenze or Cattedrale di Santa Maria del Fiore. An example of architectural brilliance, it took over a hundred years to build. A special herringbone brick laying technique was used to support the massive weight of its brick dome, design by Filippo Brunelleschi."
+        note: "Florence Cathedral is also known as Duomo di Firenze or Cattedrale di Santa Maria del Fiore. An example of architectural brilliance, it took over a hundred years to build. A special herringbone brick laying technique was used to support the massive weight of its brick dome, designed by Filippo Brunelleschi."
     },
     {
         question: "Which church is located in the Vatican?",
@@ -35,8 +35,8 @@ const qtnsArr = [
         note: "St Peter's Basilica is located in the Vatican City west of the River Tiber in Rome. The church is so large, the Statue of Liberty could fit inside it."
     },
     {
-        question: "Which Michelangelo's painting is part of the Sistine Chapel's celing?",
-        options: ["The Creation of Adam", "Mona Lisa", "The Kiss", "Liberty Leading the People"],
+        question: "Which Michelangelo's painting is part of the Sistine Chapel's ceiling?",
+        options: ["Mona Lisa", "The Kiss", "The Creation of Adam", "Liberty Leading the People"],
         correctAnswer: "The Creation of Adam",
         image: "assets/images/creation-of-man-1159966_1920.jpg",
         note: "\"The Creation of Adam\" is one of the most famous and replicated religious paintings of all time. An avid student of anatomy, Michelangelo may or may not have intended the outline of God's shroud to resemble the shape of a brain."
@@ -60,14 +60,14 @@ const qtnsArr = [
         options: ["Girl with a Pearl Earing", "The Last Supper", "Primavera (Spring)", "Vitruvian Man"],
         correctAnswer: "Primavera (Spring)",
         image: "assets/images/dim-7-C3BdCCGlbMU-unsplash.jpg",
-        note: "It has been proposed that the model for both \"The Birth of Venus\" and \"Primavera\" was Florentine beauty Simonetta Vespucci, who happened to be Amerigo Vespucci's cousin-in-law."
+        note: "It has been proposed that the model for both \"The Birth of Venus\" and \"Primavera\" was Florentine beauty Simonetta Vespucci, who also happened to be Amerigo Vespucci's cousin-in-law."
     },
     {
         question: "Known as the Virgin Queen, which British Monarch defeated the Spanish Armada?",
         options: ["Mary, Queen of Scots", "Queen Elizabeth I", "Queen Elizabeth II", "Queen Victoria"],
         correctAnswer: "Queen Elizabeth I",
         image: "assets/images/queen-62969_1280.jpg",
-        note: "Elizabeth also established Protestantism in England, was a deadly rival of Mary Queen of Scots and the last of the monarchs of House of Tudor."
+        note: "Elizabeth also established Protestantism in England, was a deadly rival of Mary Queen of Scots and the last of the monarchs of the House of Tudor."
     }
     ]
 
@@ -125,40 +125,29 @@ function displayQtn () {
 }
 
 function timeOut () {
-    $("#question").html("Time is up!");
-    $("#buttons").html(`The answer is ${qtnsArr[index].correctAnswer}`);
+    $("#question").html(`<strong>Time is up! The answer is ${qtnsArr[index].correctAnswer}</strong>`);
+    $("#buttons").empty();
+    $("#question").append(`<p>${qtnsArr[index].note}</p>`);
+    $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
     index++;
     noanswer++;
-    setTimeout(displayQtn, 4 * 1000);
+    setTimeout(displayQtn, 12 * 1000);
 }
 
 function onClick (text) {
     let answer = qtnsArr[index].correctAnswer;
-    // if (text === answer) {
-    //     $("#question").html(`Correct! The answer is ${answer}`);
-    //     $("#buttons").empty();
-    //     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
-    //     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
-    //     wins++;
-    // } else {
-    //     $("#question").html(`Wrong! The answer is ${answer}`);
-    //     $("#buttons").empty();
-    //     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
-    //     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
-    //     losses++;
-    // }
     if (text === answer) {
-        $("#question").html(`Correct! The answer is ${answer}`);
+        $("#question").html(`<strong>Correct! The answer is ${answer}</strong>`);
         wins++;
     } else {
-        $("#question").html(`Wrong! The answer is ${answer}`);
+        $("#question").html(`<strong>Wrong! The answer is ${answer}<strong>`);
         losses++;
     }
     $("#buttons").empty();
     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
     index++;
-    setTimeout(displayQtn, 8 * 1000);
+    setTimeout(displayQtn, 12 * 1000);
 }
 
 function gameOver () {
