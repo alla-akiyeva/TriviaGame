@@ -1,27 +1,70 @@
-
-
 const qtnsArr = [
     {
         question: "Who lived at 221B, Baker Street, London?",
         options: ["Gordon Ramsey", "Sherlock Holmes", "Harry Potter", "Margaret Thatcher"],
-        correctAnswer: "Sherlock Holmes"
+        correctAnswer: "Sherlock Holmes",
+        image: "Baker Street", 
+        note: "221B Baker Street is the London address of the fictional detective Sherlock Holmes in Sir Arthur Conan Doyle's novels"
     },
     {
         question: "Who painted The Birth of Venus?",
         options: ["Sandro Botticelli", "Michelangelo Buonarroti", "Leonardo da Vinci", "Salvador Dali"],
-        correctAnswer: "Sandro Botticelli"
+        correctAnswer: "Sandro Botticelli",
+        image: "Birth of Venus",
+        note: "The Birth of Venus is one of the most recognized Renaissance paintings. Along with Botticelli's other famous work, Primavera, The Birth of Venus is displayed in the Uffizi gallery in Florence, Italy"
     },
     {
         question: "Which German city is famous for the perfume it produces?",
         options: ["Munich", "Berlin", "Rudersberg", "Cologne"],
-        correctAnswer: "Cologne"
+        correctAnswer: "Cologne",
+        image: "Cologne",
+        note: "Cologne is an ancient city established by the Romans in the 1st century AD. \"Eau de Cologne\" means \"water from Cologne\" in French. "
     }, 
+    // {
+    //     question: "Which famous novel is based in Atlanta, GA?",
+    //     options: ["The Fault in Our Stars by John Green", "Resurrection by Leo Tolstoy", "Animal Farm by George Orwell", "Gone With The Wind by Margaret Mitchell"],
+    //     correctAnswer: "Gone With The Wind by Margaret Mitchell"
+    // },
     {
-        question: "Which famous novel is based in Atlanta, GA?",
-        options: ["The Fault in Our Stars by John Green", "Resurrection by Leo Tolstoy", "Animal Farm by George Orwell", "Gone With The Wind by Margaret Mitchell"],
-        correctAnswer: "Gone With The Wind by Margaret Mitchell"
+        question: "Which architectural masterpiece has the largest brick dome ever built?",
+        options: ["Florence Cathedral", "Hagia Sophia", "Pantheon", "Trump Tower"],
+        correctAnswer: "Florence Cathedral",
+        image: "Duomo di Firenze",
+        note: "Florence Cathedral is also known as Duomo di Firenze or Cattedrale di Santa Maria del Fiore. An example of architectural brilliance, it took over a hundred years to build. A special herringbone brick laying technique was used to support the massive weight of its brick dome, design by Filippo Brunelleschi."
+    },
+    {
+        question: "Which church is located in the Vatican?",
+        options: ["St Basil's Cathedral", "Westminster Abbey", "St Peter's Basilica", "La Sagrada Familia"],
+        correctAnswer: "St Peter's Basilica",
+        image: "St Peter's Basilica",
+        note: "St Peter's Basilica is located in the Vatican City west of the River Tiber in Rome. The church is so large, the Statue of Liberty could fit inside it."
+    },
+    {
+        question: the creation of adam
+        options:
+        correctAnswer:
+    },
+    {
+        question: hamlet
+        options:
+        correctAnswer:
+    },
+    {
+        question: queen Victoria
+        options:
+        correctAnswer:
+    },
+    {
+        question: primavera
+        options:
+        correctAnswer:
+    },
+    {
+        question: queen elizabeth i
+        options:
+        correctAnswer:
     }
-];
+    ]
 
 // You'll create a trivia game that shows only one question until the player answers it or their time runs out.
 // Display first question in the array (jQuery selector)
@@ -116,61 +159,3 @@ function gameRestart () {
 };
 
 $(document).ready(displayQtn);
-
-// function timeUpdate () {
-//     time++;
-//     $("#time").html(`Time Remaining: ${time}`);
-// }
-
-// function displayNewQuestion () {
-//     randomQuestion = questionsArray[Math.floor(Math.random() * questionsArray.length)];
-//     console.log(`Correct answer: ${randomQuestion.correctAnswer}`);
-//     $("#question").html(randomQuestion.question);
-//     $("#buttons").empty();
-//     for (var i = 0; i < randomQuestion.options.length; i++) {
-//         $("#buttons").append(`<button>${randomQuestion.options[i]}</button>`);
-//     }
-//     displayedQuestions++;
-//     setInterval(timeUpdate, 1 * 1000);
-    
-// }
-
-// displayNewQuestion ();
-
-// setTimeout (() => {
-//     console.log ("Time is up!");
-//     console.log(`The correct answer is ${randomQuestion.correctAnswer}`);
-//     incorrectAnswers++;
-//     setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-// }, 15 * 1000)
-
-// $(document).on("click", "button", function () {
-//   clearTimeout();
-//     if ($(this).text() == randomQuestion.correctAnswer) {
-//         console.log("That is correct! Congrats!");
-//         wins++;
-//         clearTimeout();
-//         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-//     } 
-//     else {
-//         console.log("Incorrect");
-//         console.log(`The correct answer is ${randomQuestion.correctAnswer}`);
-//         losses++;
-//         setTimeout (() => {displayNewQuestion ();}, 3 * 1000)
-//     }
-// });
-
-//  endGame function
-// while displayedQuestions < 10, run game function
-// if (displayedQuestions ===10), show message box confirm {}
-// if (confirm(
-//     `
-//         Total correct answers: ${correctAnswers}
-//         Total incorrect answers: ${incorrectAnswers}
-//         Would you like to restart the game?
-//     `
-// )) {
-//     displayNewQuestion ();
-//     correctAnswers = 0;
-//     incorrectAnswers = 0;
-// }
