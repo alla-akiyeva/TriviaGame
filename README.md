@@ -4,7 +4,7 @@ Deployed version: https://alla-akiyeva.github.io/Crystal-Collector-Game/
 
 This app demonstrates the use of JavaScript timers (`setTimeout, setInterval`) while testing the user's knowledge of European history and literature. 
 
-#### How it works
+### How it works
 
 * The game shows one question at a time from a total of ten questions until the player answers it or until the time runs out.
 
@@ -19,7 +19,7 @@ This app demonstrates the use of JavaScript timers (`setTimeout, setInterval`) w
 
 #### Built With
 
-HTML, CSS, JavaScript, jQuery
+##### HTML, CSS, JavaScript, jQuery
 
 ________________________
 
