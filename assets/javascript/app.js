@@ -127,6 +127,7 @@ function displayQtn () {
 function timeOut () {
     $("#question").html(`<strong>Time is up! The answer is ${qtnsArr[index].correctAnswer}</strong>`);
     $("#buttons").empty();
+    $("#time").empty();
     $("#question").append(`<p>${qtnsArr[index].note}</p>`);
     $("#question").append(`<img src="${qtnsArr[index].image}"></img>`);
     index++;
