@@ -1,4 +1,4 @@
-# Euro Quiz
+# Trivia Game
 
 Deployed version: https://alla-akiyeva.github.io/Crystal-Collector-Game/
 
